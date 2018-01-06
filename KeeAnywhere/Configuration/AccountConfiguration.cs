@@ -27,6 +27,13 @@ namespace KeeAnywhere.Configuration
         [DataMember]
         public Dictionary<string, string> AdditionalSettings { get; set; }
 
+        [DataMember]
+        [JsonEncrypt]
+        public string CloudPassword { get; set; }
+
+        [DataMember]
+        public string Tags { get; set; }
+
         public string DisplayName
         {
             get { return string.Format("{0} ({1})", Name, Type); }
