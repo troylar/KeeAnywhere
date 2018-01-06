@@ -10,6 +10,9 @@ namespace KeeAnywhere.Configuration
     [DataContract]
     public class AccountConfiguration
     {
+        private string _cloudPassword = string.Empty;
+        private string _tags = string.Empty;
+
         [DataMember]
         public string Id { get; set; }
 
@@ -29,10 +32,19 @@ namespace KeeAnywhere.Configuration
 
         [DataMember]
         [JsonEncrypt]
-        public string CloudPassword { get; set; }
+        public string CloudPassword
+        {
+            get { return _cloudPassword; }
+            set { _cloudPassword = value; }
+        }
 
         [DataMember]
-        public string Tags { get; set; }
+        public string Tags
+
+        {
+            get { return _tags; }
+            set { _tags = value; }
+        }
 
         public string DisplayName
         {
