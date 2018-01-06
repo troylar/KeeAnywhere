@@ -160,6 +160,7 @@
             this.txtTagsToSync.Name = "txtTagsToSync";
             this.txtTagsToSync.Size = new System.Drawing.Size(437, 20);
             this.txtTagsToSync.TabIndex = 13;
+            this.txtTagsToSync.TextChanged += new System.EventHandler(this.txtTagsToSync_TextChanged);
             // 
             // m_btnAccountCheck
             // 

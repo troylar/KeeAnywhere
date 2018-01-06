@@ -401,11 +401,28 @@ namespace KeeAnywhere.Forms
 
         private void m_lvAccounts_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (m_lvAccounts.SelectedItems.Count > 1)
+            {
+                txtTagsToSync.Text = string.Empty;
+                txtTagsToSync.Enabled = false;
+                btnSave.Enabled = false;
+                return;
+            }
+            m_selectedAccount = m_lvAccounts.SelectedItems[0].Tag
+                as AccountConfiguration;
+            txtTagsToSync.Text = m_selectedAccount.Tags;
+            btnSave.Enabled = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            m_selectedAccount.Tags = txtTagsToSync.Text;
+            btnSave.Enabled = false;
+        }
 
+        private void txtTagsToSync_TextChanged(object sender, EventArgs e)
+        {
+            btnSave.Enabled = !m_selectedAccount.Tags.Equals(txtTagsToSync.Text);
         }
     }
 }
