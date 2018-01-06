@@ -77,6 +77,7 @@
             this.m_dlgSelectBackupToLocalFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.txtTagsToSync = new System.Windows.Forms.TextBox();
             this.lblTags = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.m_bannerImage)).BeginInit();
             this.m_tcSettings.SuspendLayout();
             this.m_tabAccounts.SuspendLayout();
@@ -114,6 +115,7 @@
             // 
             // m_tabAccounts
             // 
+            this.m_tabAccounts.Controls.Add(this.btnSave);
             this.m_tabAccounts.Controls.Add(this.lblTags);
             this.m_tabAccounts.Controls.Add(this.txtTagsToSync);
             this.m_tabAccounts.Controls.Add(this.m_btnAccountCheck);
@@ -583,6 +585,16 @@
             this.lblTags.TabIndex = 14;
             this.lblTags.Text = "Tags:";
             // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(490, 232);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 15;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.m_btnOK;
@@ -668,5 +680,6 @@
         private System.Windows.Forms.FolderBrowserDialog m_dlgSelectBackupToLocalFolder;
         private System.Windows.Forms.Label lblTags;
         private System.Windows.Forms.TextBox txtTagsToSync;
+        private System.Windows.Forms.Button btnSave;
     }
 }
