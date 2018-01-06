@@ -397,5 +397,10 @@ namespace KeeAnywhere.Forms
                 m_txtBackupToLocalFolder.Text = dlg.SelectedPath;
             }
         }
+
+        private void m_lvAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

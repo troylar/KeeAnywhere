@@ -33,6 +33,9 @@
             this.m_bannerImage = new System.Windows.Forms.PictureBox();
             this.m_tcSettings = new System.Windows.Forms.TabControl();
             this.m_tabAccounts = new System.Windows.Forms.TabPage();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.lblTags = new System.Windows.Forms.Label();
+            this.txtTagsToSync = new System.Windows.Forms.TextBox();
             this.m_btnAccountCheck = new System.Windows.Forms.Button();
             this.m_btnAccountAdd = new KeeAnywhere.Forms.DropDownButton();
             this.m_mnuAdd = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -75,9 +78,6 @@
             this.m_pnlFormButtons = new System.Windows.Forms.TableLayoutPanel();
             this.m_btnHelp = new KeeAnywhere.Forms.DropDownButton();
             this.m_dlgSelectBackupToLocalFolder = new System.Windows.Forms.FolderBrowserDialog();
-            this.txtTagsToSync = new System.Windows.Forms.TextBox();
-            this.lblTags = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.m_bannerImage)).BeginInit();
             this.m_tcSettings.SuspendLayout();
             this.m_tabAccounts.SuspendLayout();
@@ -134,6 +134,32 @@
             this.m_tabAccounts.Text = "Accounts";
             this.m_tabAccounts.UseVisualStyleBackColor = true;
             // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(490, 232);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 15;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // lblTags
+            // 
+            this.lblTags.AutoSize = true;
+            this.lblTags.Location = new System.Drawing.Point(6, 238);
+            this.lblTags.Name = "lblTags";
+            this.lblTags.Size = new System.Drawing.Size(34, 13);
+            this.lblTags.TabIndex = 14;
+            this.lblTags.Text = "Tags:";
+            // 
+            // txtTagsToSync
+            // 
+            this.txtTagsToSync.Location = new System.Drawing.Point(46, 235);
+            this.txtTagsToSync.Name = "txtTagsToSync";
+            this.txtTagsToSync.Size = new System.Drawing.Size(437, 20);
+            this.txtTagsToSync.TabIndex = 13;
+            // 
             // m_btnAccountCheck
             // 
             this.m_btnAccountCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -189,6 +215,7 @@
             this.m_lvAccounts.UseCompatibleStateImageBehavior = false;
             this.m_lvAccounts.View = System.Windows.Forms.View.Details;
             this.m_lvAccounts.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.OnAfterLabelEdit);
+            this.m_lvAccounts.SelectedIndexChanged += new System.EventHandler(this.m_lvAccounts_SelectedIndexChanged);
             // 
             // m_imlProviderIcons
             // 
@@ -568,32 +595,6 @@
             // m_dlgSelectBackupToLocalFolder
             // 
             this.m_dlgSelectBackupToLocalFolder.Description = "Pleae select your local folder for backups.";
-            // 
-            // txtTagsToSync
-            // 
-            this.txtTagsToSync.Location = new System.Drawing.Point(46, 235);
-            this.txtTagsToSync.Name = "txtTagsToSync";
-            this.txtTagsToSync.Size = new System.Drawing.Size(437, 20);
-            this.txtTagsToSync.TabIndex = 13;
-            // 
-            // lblTags
-            // 
-            this.lblTags.AutoSize = true;
-            this.lblTags.Location = new System.Drawing.Point(6, 238);
-            this.lblTags.Name = "lblTags";
-            this.lblTags.Size = new System.Drawing.Size(34, 13);
-            this.lblTags.TabIndex = 14;
-            this.lblTags.Text = "Tags:";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(490, 232);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 15;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
