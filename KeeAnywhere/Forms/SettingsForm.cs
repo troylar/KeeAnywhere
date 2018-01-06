@@ -16,6 +16,7 @@ namespace KeeAnywhere.Forms
     {
         private ConfigurationService m_configService;
         private UIService m_uiService;
+        private AccountConfiguration m_selectedAccount;
 
         public SettingsForm()
         {
@@ -399,6 +400,10 @@ namespace KeeAnywhere.Forms
         }
 
         private void m_lvAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
         {
 
         }
