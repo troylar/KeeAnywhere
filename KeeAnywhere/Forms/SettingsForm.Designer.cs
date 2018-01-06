@@ -75,6 +75,8 @@
             this.m_pnlFormButtons = new System.Windows.Forms.TableLayoutPanel();
             this.m_btnHelp = new KeeAnywhere.Forms.DropDownButton();
             this.m_dlgSelectBackupToLocalFolder = new System.Windows.Forms.FolderBrowserDialog();
+            this.txtTagsToSync = new System.Windows.Forms.TextBox();
+            this.lblTags = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.m_bannerImage)).BeginInit();
             this.m_tcSettings.SuspendLayout();
             this.m_tabAccounts.SuspendLayout();
@@ -112,6 +114,8 @@
             // 
             // m_tabAccounts
             // 
+            this.m_tabAccounts.Controls.Add(this.lblTags);
+            this.m_tabAccounts.Controls.Add(this.txtTagsToSync);
             this.m_tabAccounts.Controls.Add(this.m_btnAccountCheck);
             this.m_tabAccounts.Controls.Add(this.m_btnAccountAdd);
             this.m_tabAccounts.Controls.Add(this.m_btnAccountRemove);
@@ -176,7 +180,7 @@
             this.m_lvAccounts.Location = new System.Drawing.Point(7, 38);
             this.m_lvAccounts.MultiSelect = false;
             this.m_lvAccounts.Name = "m_lvAccounts";
-            this.m_lvAccounts.Size = new System.Drawing.Size(476, 217);
+            this.m_lvAccounts.Size = new System.Drawing.Size(476, 191);
             this.m_lvAccounts.SmallImageList = this.m_imlProviderIcons;
             this.m_lvAccounts.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.m_lvAccounts.TabIndex = 9;
@@ -563,6 +567,22 @@
             // 
             this.m_dlgSelectBackupToLocalFolder.Description = "Pleae select your local folder for backups.";
             // 
+            // txtTagsToSync
+            // 
+            this.txtTagsToSync.Location = new System.Drawing.Point(46, 235);
+            this.txtTagsToSync.Name = "txtTagsToSync";
+            this.txtTagsToSync.Size = new System.Drawing.Size(437, 20);
+            this.txtTagsToSync.TabIndex = 13;
+            // 
+            // lblTags
+            // 
+            this.lblTags.AutoSize = true;
+            this.lblTags.Location = new System.Drawing.Point(6, 238);
+            this.lblTags.Name = "lblTags";
+            this.lblTags.Size = new System.Drawing.Size(34, 13);
+            this.lblTags.TabIndex = 14;
+            this.lblTags.Text = "Tags:";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.m_btnOK;
@@ -646,5 +666,7 @@
         private System.Windows.Forms.CheckBox m_chkBackupToRemote;
         private System.Windows.Forms.Button m_btnBackupToLocalFolder;
         private System.Windows.Forms.FolderBrowserDialog m_dlgSelectBackupToLocalFolder;
+        private System.Windows.Forms.Label lblTags;
+        private System.Windows.Forms.TextBox txtTagsToSync;
     }
 }
