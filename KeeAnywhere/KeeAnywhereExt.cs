@@ -69,7 +69,7 @@ namespace KeeAnywhere
             _cacheManagerService.RegisterEvents();
 
             // Initialize storage providers
-            _storageService = new StorageService(_configService, _cacheManagerService);
+            _storageService = new StorageService(_configService, _cacheManagerService, _host);
             _storageService.RegisterPrefixes();
 
             // Initialize UIService

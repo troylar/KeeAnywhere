@@ -78,6 +78,8 @@
             this.m_pnlFormButtons = new System.Windows.Forms.TableLayoutPanel();
             this.m_btnHelp = new KeeAnywhere.Forms.DropDownButton();
             this.m_dlgSelectBackupToLocalFolder = new System.Windows.Forms.FolderBrowserDialog();
+            this.lblCloudPassword = new System.Windows.Forms.Label();
+            this.txtCloudPassword = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_bannerImage)).BeginInit();
             this.m_tcSettings.SuspendLayout();
             this.m_tabAccounts.SuspendLayout();
@@ -115,6 +117,8 @@
             // 
             // m_tabAccounts
             // 
+            this.m_tabAccounts.Controls.Add(this.lblCloudPassword);
+            this.m_tabAccounts.Controls.Add(this.txtCloudPassword);
             this.m_tabAccounts.Controls.Add(this.btnSave);
             this.m_tabAccounts.Controls.Add(this.lblTags);
             this.m_tabAccounts.Controls.Add(this.txtTagsToSync);
@@ -156,9 +160,9 @@
             // 
             // txtTagsToSync
             // 
-            this.txtTagsToSync.Location = new System.Drawing.Point(46, 235);
+            this.txtTagsToSync.Location = new System.Drawing.Point(62, 235);
             this.txtTagsToSync.Name = "txtTagsToSync";
-            this.txtTagsToSync.Size = new System.Drawing.Size(437, 20);
+            this.txtTagsToSync.Size = new System.Drawing.Size(421, 20);
             this.txtTagsToSync.TabIndex = 13;
             this.txtTagsToSync.TextChanged += new System.EventHandler(this.txtTagsToSync_TextChanged);
             // 
@@ -210,7 +214,7 @@
             this.m_lvAccounts.Location = new System.Drawing.Point(7, 38);
             this.m_lvAccounts.MultiSelect = false;
             this.m_lvAccounts.Name = "m_lvAccounts";
-            this.m_lvAccounts.Size = new System.Drawing.Size(476, 191);
+            this.m_lvAccounts.Size = new System.Drawing.Size(476, 167);
             this.m_lvAccounts.SmallImageList = this.m_imlProviderIcons;
             this.m_lvAccounts.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.m_lvAccounts.TabIndex = 9;
@@ -598,6 +602,23 @@
             // 
             this.m_dlgSelectBackupToLocalFolder.Description = "Pleae select your local folder for backups.";
             // 
+            // lblCloudPassword
+            // 
+            this.lblCloudPassword.AutoSize = true;
+            this.lblCloudPassword.Location = new System.Drawing.Point(6, 214);
+            this.lblCloudPassword.Name = "lblCloudPassword";
+            this.lblCloudPassword.Size = new System.Drawing.Size(56, 13);
+            this.lblCloudPassword.TabIndex = 17;
+            this.lblCloudPassword.Text = "Password:";
+            // 
+            // txtCloudPassword
+            // 
+            this.txtCloudPassword.Location = new System.Drawing.Point(62, 211);
+            this.txtCloudPassword.Name = "txtCloudPassword";
+            this.txtCloudPassword.Size = new System.Drawing.Size(421, 20);
+            this.txtCloudPassword.TabIndex = 16;
+            this.txtCloudPassword.UseSystemPasswordChar = true;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.m_btnOK;
@@ -684,5 +705,7 @@
         private System.Windows.Forms.Label lblTags;
         private System.Windows.Forms.TextBox txtTagsToSync;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblCloudPassword;
+        private System.Windows.Forms.TextBox txtCloudPassword;
     }
 }

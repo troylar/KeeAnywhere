@@ -411,18 +411,21 @@ namespace KeeAnywhere.Forms
             m_selectedAccount = m_lvAccounts.SelectedItems[0].Tag
                 as AccountConfiguration;
             txtTagsToSync.Text = m_selectedAccount.Tags;
+            txtCloudPassword.Text = m_selectedAccount.CloudPassword;
             btnSave.Enabled = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            m_selectedAccount.CloudPassword = txtCloudPassword.Text;
             m_selectedAccount.Tags = txtTagsToSync.Text;
             btnSave.Enabled = false;
         }
 
         private void txtTagsToSync_TextChanged(object sender, EventArgs e)
         {
-            btnSave.Enabled = !m_selectedAccount.Tags.Equals(txtTagsToSync.Text);
+            btnSave.Enabled = !m_selectedAccount.Tags.Equals(txtTagsToSync.Text) ||
+                              !m_selectedAccount.CloudPassword.Equals(txtCloudPassword.Text);
         }
     }
 }

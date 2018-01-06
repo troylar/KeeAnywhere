@@ -41,7 +41,6 @@ namespace KeeAnywhere
                     i++;
                     newAccount.Name = string.Format("{0} ({1})", name, i);
                 }
-
                 _configService.Accounts.Add(newAccount);
                 return newAccount;
             }

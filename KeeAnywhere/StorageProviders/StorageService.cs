@@ -6,6 +6,10 @@ using KeeAnywhere.Backup;
 using KeeAnywhere.Configuration;
 using KeeAnywhere.Offline;
 using KeeAnywhere.WebRequest;
+using KeePass.Plugins;
+using KeePassLib;
+using KeePassLib.Collections;
+using KeePassLib.Keys;
 using KeePassLib.Serialization;
 
 namespace KeeAnywhere.StorageProviders
@@ -14,14 +18,28 @@ namespace KeeAnywhere.StorageProviders
     {
         private readonly ConfigurationService _configService;
         private readonly CacheManagerService _cacheManagerService;
+        private readonly IPluginHost _host;
 
-        public StorageService(ConfigurationService configService, CacheManagerService cacheManagerService)
+        public StorageService(ConfigurationService configService, CacheManagerService cacheManagerService, IPluginHost pluginHost)
         {
             if (configService == null) throw new ArgumentNullException("configService");
             if (cacheManagerService == null) throw new ArgumentNullException("cacheManagerService");
 
             _configService = configService;
             _cacheManagerService = cacheManagerService;
+            _host = pluginHost;
+        }
+
+        public AccountConfiguration GetAccountConfigurationByUri(StorageUri uri)
+        {
+            var descriptor = StorageRegistry.Descriptors.FirstOrDefault(_ => _.Scheme == uri.Scheme);
+            if (descriptor == null)
+                throw new NotImplementedException(string.Format("A provider for scheme '{0}' is not implemented.",
+                    uri.Scheme));
+
+            var accountName = uri.GetAccountName();
+            var account = _configService.FindAccount(descriptor.Type, accountName);
+            return account;
         }
 
         public IStorageProvider GetProviderByUri(StorageUri uri)
@@ -78,7 +96,7 @@ namespace KeeAnywhere.StorageProviders
         {
             var providerUri = new StorageUri(uri);
             var provider = this.GetProviderByUri(providerUri);
-
+            var account = this.GetAccountConfigurationByUri(providerUri);
 
             // Pipeline: Backup => Cache => Basic Provider
 
@@ -93,9 +111,39 @@ namespace KeeAnywhere.StorageProviders
                 provider = BackupProvider.WrapInBackupProvider(provider, providerUri, _configService);
             }
 
-            var itemPath = providerUri.GetPath();
+            string itemPath;
+            if (!string.IsNullOrEmpty(account.Tags) || !string.IsNullOrEmpty(account.CloudPassword))
+            {
+                itemPath = CreateBackupFile(account);
+            }
+            else
+            {
+                itemPath = providerUri.GetPath();
+            }
 
             return new KeeAnywhereWebRequest(provider, itemPath);
+        }
+
+        public string CreateBackupFile(AccountConfiguration account)
+        {
+            var entries = new PwObjectList<PwEntry>();
+            var tmp = $"{System.Guid.NewGuid().ToString()}.kdbx";
+            foreach (var tag in account.Tags.Split(','))
+            {
+                _host.Database.RootGroup.FindEntriesByTag(tag.Trim(), entries, true);
+            }
+            var ci = IOConnectionInfo.FromPath(tmp);
+            var compKey = new CompositeKey();
+            compKey.AddUserKey(new KcpPassword(account.CloudPassword));
+            var db = new PwDatabase();
+            db.RootGroup = new PwGroup();
+            foreach (var entry in entries)
+            {
+                db.RootGroup.AddEntry(entry, true);
+            }
+            db.MasterKey = compKey;
+            db.SaveAs(ci, false, null);
+            return tmp;
         }
 
         public void RegisterPrefixes()
